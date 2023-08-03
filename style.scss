@@ -1,0 +1,55 @@
+@mixin flex($direction, $justify, $align) {
+    display: flex;
+   flex-direction: $direction;
+   justify-content: $justify;
+   align-items: $align; 
+}
+
+body {
+    margin: 0px;
+    //padding: 0px;
+    box-sizing: border-box;
+
+    >div {
+        @include flex(column, center, center);
+        background-color: rgb(215, 215, 215);
+        width: 100%;
+        height: 100vh;
+        box-sizing: border-box;
+
+        >div{
+            @include flex(row, center, center);
+            padding: 20px 100px;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+    }
+}
+
+#choice {
+    @include flex(row, space-around, center);
+
+    button {
+        width: 200px;
+        height: 200px;
+        border-radius: 100%;
+    }
+}
+
+#count {
+    @include flex(row, space-between, center);
+    gap: 50px;
+}
+
+#game {
+    @include flex(row, center, center);
+    gap: 100px;
+
+    button {
+        height: 40px;
+        width: 100px;
+        border-radius: 50px;
+    }
+}
