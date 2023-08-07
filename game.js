@@ -1,3 +1,7 @@
+let selected;
+const allButtons = document.querySelectorAll('#choice button');
+
+
 function getComputerChoice() {
   let random = Math.floor(Math.random() * 3 + 1);
   let computerChoice;
@@ -13,20 +17,24 @@ function getComputerChoice() {
   return computerChoice;
 }
 
-function userInput() {
-  let userChoice = prompt("Rock, paper or scissors?");
-  let lower = userChoice.toLowerCase;
-  return userChoice.toLowerCase();
+function userInput(e) {
+  allButtons.forEach(button => button.classList.remove('selected'));
+  console.log(e.target.classList.toggle('selected'));
+  selected = e.target.id;
 }
 
 function rockPaperScissors(computer, user) {
-//   console.log(computer);
-//   console.log(user);
 
-  while (user != "rock" && user != "scissors" && user != "paper") {
-    console.log
-    user = userInput();
+  console.log('playing');
+
+  console.log('user selected ' + user);
+
+  if (user != "rock" && user != "scissors" && user != "paper") {
+    console.log('Select your sign');
+    return;
   }
+
+ // console.log('function continued')
 
   if (user == computer) {
     return "tie";
@@ -55,15 +63,18 @@ function rockPaperScissors(computer, user) {
         }
     }
   }
+
+  allButtons.forEach(button => button.classList.remove('selected'));
 }
 
+/*
 function game() {
     let r = prompt("How many rounds would you like to play?");
     let userScore = 0;
     let computerScore = 0;
 
     for (i = 0; i < r; i++) {
-        let result = rockPaperScissors(getComputerChoice(), userInput());
+        let result = rockPaperScissors(getComputerChoice(), selected);
         console.log(result);
 
         switch(result){
@@ -85,4 +96,10 @@ function game() {
     }
 }
 
-console.log(game());
+*/
+
+
+
+document.querySelectorAll('#choice button').forEach(button => button.addEventListener('click', button => userInput(button)));
+playButton = document.getElementById('play');
+playButton.addEventListener('click', () => rockPaperScissors(getComputerChoice(), selected));

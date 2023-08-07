@@ -5,6 +5,10 @@
    align-items: $align; 
 }
 
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 body {
     margin: 0px;
     //padding: 0px;
@@ -41,6 +45,10 @@ body {
 #count {
     @include flex(row, space-between, center);
     gap: 50px;
+
+    div {
+        @include flex(column, space-between, center);
+    }
 }
 
 #game {
@@ -52,4 +60,9 @@ body {
         width: 100px;
         border-radius: 50px;
     }
+}
+
+.selected {
+    border-width: 7px;
+    border-color: rgb(100, 100, 232);
 }
