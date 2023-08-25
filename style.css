@@ -11,7 +11,7 @@ body > div {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(215, 215, 215);
+  background-color: rgb(224, 227, 233);
   width: 100%;
   height: 100vh;
   box-sizing: border-box;
@@ -34,9 +34,14 @@ body > div > div {
   align-items: center;
 }
 #choice button {
+  font-size: 18px;
   width: 200px;
   height: 200px;
   border-radius: 100%;
+  border-color: rgb(98, 152, 234);
+  box-shadow: 0px 0px 3px rgb(58, 65, 75);
+  border-style: solid;
+  transition: 0.1s ease-out 0ms;
 }
 
 #count {
@@ -64,9 +69,33 @@ body > div > div {
   height: 40px;
   width: 100px;
   border-radius: 50px;
+  font-size: 12px;
+  background-color: rgb(255, 255, 255);
+  width: 100px;
+  height: 40px;
+  border: 0;
+  box-shadow: 0px 0px 3px rgb(51, 52, 53);
+  color: rgb(37, 43, 52);
+}
+
+button {
+  transition: 0.1s ease-out 0ms;
+}
+
+button:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 0px 6px rgb(51, 52, 53);
+}
+
+button:active {
+  transform: scale(0.98);
+  box-shadow: 0px 0px 1px rgb(51, 52, 53);
 }
 
 .selected {
   border-width: 7px;
   border-color: rgb(100, 100, 232);
+  width: 250px;
+  height: 250px;
+  box-shadow: 0px 0px 8px rgb(58, 65, 75);
 }/*# sourceMappingURL=style.css.map */

@@ -1,6 +1,12 @@
 let selected;
 const allButtons = document.querySelectorAll('#choice button');
-
+userDisplay = document.getElementById('user-score');
+compDisplay = document.getElementById('comp-score');
+infoDisplay = document.getElementById('info')
+newGame = document.getElementById('new');
+let userScore = 0;
+let compScore = 0;
+let won = false;
 
 function getComputerChoice() {
   let random = Math.floor(Math.random() * 3 + 1);
@@ -23,6 +29,32 @@ function userInput(e) {
   selected = e.target.id;
 }
 
+function userWin(computer) {
+  userScore ++;
+  console.log(userScore);
+  userDisplay.innerHTML = userScore;
+  infoDisplay.innerHTML = `Computer chose ${computer}. You won!`;
+}
+
+function computerWin(computer) {
+  compScore ++;
+  console.log(compScore);
+  compDisplay.innerHTML = compScore;
+  infoDisplay.innerHTML = `Compuer chose ${computer}. Computer won :(`
+}
+
+function tie(computer) {
+  infoDisplay.innerHTML = `Computer also chose ${computer}. It's a tie!`
+}
+
+function startNewGame() {
+  infoDisplay.innerHTML = `You started a new game. Make your choice!`
+  compScore = 0;
+  userScore = 0;
+  compDisplay.innerHTML = compScore;
+  userDisplay.innerHTML = userScore;
+};
+
 function rockPaperScissors(computer, user) {
 
   console.log('playing');
@@ -35,36 +67,47 @@ function rockPaperScissors(computer, user) {
   }
 
  // console.log('function continued')
-
   if (user == computer) {
-    return "tie";
+    tie(computer);
   } else {
 
     switch (user) {
       case "rock":
         if ((computer == "scissors")) {
-          return "User wins";
+          userWin(computer);
         } else {
-          return "Computer wins";
+          computerWin(computer);
         }
         break;
       case "paper":
         if ((computer == "rock")) {
-          return "User wins";
+          userWin(computer);
         } else {
-          return "Computer wins";
+          computerWin(computer);
         }
         break;
       case "scissors":
         if ((computer == "paper")) {
-          return "User wins";
+          userWin(computer);
         } else {
-          return "Computer wins";
+          computerWin(computer);
         }
     }
   }
 
   allButtons.forEach(button => button.classList.remove('selected'));
+
+  while (!won) {
+    if (compScore == 5) {
+      infoDisplay.innerHTML = 'Computer won the game. Continue or start a new game.'
+      won = true;
+    } else if (userScore == 5) {
+      infoDisplay.innerHTML = 'You won the game! Continue or start a new game.'
+      won = true;
+    }
+    break;
+  }
+
 }
 
 /*
@@ -103,3 +146,4 @@ function game() {
 document.querySelectorAll('#choice button').forEach(button => button.addEventListener('click', button => userInput(button)));
 playButton = document.getElementById('play');
 playButton.addEventListener('click', () => rockPaperScissors(getComputerChoice(), selected));
+newGame.addEventListener('click', () => startNewGame());
