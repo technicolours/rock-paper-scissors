@@ -54,6 +54,7 @@ function startNewGame() {
   compDisplay.innerHTML = compScore;
   userDisplay.innerHTML = userScore;
   allButtons.forEach(button => button.classList.remove('selected'));
+  won = false;
 };
 
 function rockPaperScissors(computer, user) {
