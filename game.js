@@ -53,6 +53,7 @@ function startNewGame() {
   userScore = 0;
   compDisplay.innerHTML = compScore;
   userDisplay.innerHTML = userScore;
+  allButtons.forEach(button => button.classList.remove('selected'));
 };
 
 function rockPaperScissors(computer, user) {
@@ -63,6 +64,7 @@ function rockPaperScissors(computer, user) {
 
   if (user != "rock" && user != "scissors" && user != "paper") {
     console.log('Select your sign');
+    infoDisplay.innerHTML = "Select one of the signs first."
     return;
   }
 
